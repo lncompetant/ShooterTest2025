@@ -51,7 +51,7 @@ public class RobotContainer {
         .onTrue(new ExampleCommand(m_exampleSubsystem));
 
             testerXbox.rightTrigger().whileTrue(new ShootCoral(shooter, Constants.ShooterConstants.LeftMaxShooterSpeed,Constants.ShooterConstants.rightMaxShooterSpeed));
-      Trigger funnelTrigger = new Trigger(shooter.getCoralSensor2BooleanSupplier()); //make the trigger and bind it to the funnel sensor
+      Trigger funnelTrigger = new Trigger(()->shooter.getCoralSensor2()); //make the trigger and bind it to the funnel sensor
       funnelTrigger.onTrue(new Intake(shooter));
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.

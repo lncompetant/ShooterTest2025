@@ -49,19 +49,10 @@ public class Shooter extends SubsystemBase {
     rightMotor.set(rightMotorSpeed);
   }
   public boolean getCoralSensor2(){
-    return  coralSensor2BooleanSupplier.getAsBoolean();  
+    return coralSensor2.get();
   }
-
-  public BooleanSupplier getCoralSensor2BooleanSupplier(){
-    return coralSensor2BooleanSupplier;
-  }
-  
-  public BooleanSupplier getCoralSensor3BooleanSupplier(){
-    return coralSensor3BooleanSupplier;
-  }
-
   public boolean getCoralSensor3(){
-    return coralSensor3BooleanSupplier.getAsBoolean();
+    return coralSensor3.get();
   }
 
   public void stopShooter(){
@@ -75,10 +66,7 @@ public class Shooter extends SubsystemBase {
     coralSensor2Output =coralSensor2.get();
     coralSensor3Output =coralSensor3.get();
     
-    coralSensor3BooleanSupplier =()->coralSensor3Output;
-    coralSensor2BooleanSupplier =()->coralSensor2Output;  //cast the boolean that digitalOutput creates into a boolean supplier that can be used for the trigger
-
-    backCoralSensorPublisher.setDefault(false);
-    backCoralSensorPublisher.set(coralSensor3Output);
+ //   backCoralSensorPublisher.setDefault(false);
+ //   backCoralSensorPublisher.set(coralSensor3Output);
   }
 }
