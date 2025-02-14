@@ -23,7 +23,7 @@ public class Intake extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    shooter.spinShooters(Constants.ShooterConstants.slowShooterSpeed, Constants.ShooterConstants.slowShooterSpeed);
+    shooter.spinShooters(Constants.ShooterConstants.rightIntakeSpeed, Constants.ShooterConstants.leftIntakeSpeed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -41,15 +41,10 @@ public class Intake extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(!shooter.getCoralSensor1()){
-      return true;
-     }
-     else{
       return false;
      }
 
   }
-}
 
 
 

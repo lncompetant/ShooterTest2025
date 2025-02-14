@@ -23,6 +23,8 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
+
+  
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final Shooter shooter =new Shooter();
@@ -52,9 +54,9 @@ public class RobotContainer {
         .onTrue(new ExampleCommand(m_exampleSubsystem));
 
             testerXbox.rightTrigger().whileTrue(new ShootCoral(shooter, Constants.ShooterConstants.LeftMaxShooterSpeed,Constants.ShooterConstants.rightMaxShooterSpeed));
-      DigitalInput coralSensor1 =new DigitalInput(1);
+      DigitalInput coralSensor1 = new DigitalInput(1);
       Trigger funnelTrigger = new Trigger(coralSensor1::get); //make the trigger and bind it to the funnel sensor
-      funnelTrigger.onTrue(new Intake(shooter));
+      funnelTrigger.whileFalse(new Intake(shooter));
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
 
