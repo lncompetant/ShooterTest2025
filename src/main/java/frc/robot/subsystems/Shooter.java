@@ -24,8 +24,8 @@ public class Shooter extends SubsystemBase {
   /** Creates a new Shooter. */
   private SparkMax leftMotor = new SparkMax(Constants.ShooterConstants.leftMotorID,MotorType.kBrushless);
   private SparkMax rightMotor = new SparkMax(Constants.ShooterConstants.rightMotorID, MotorType.kBrushless);
-  private DigitalInput coralSensor1 = new DigitalInput(Constants.ShooterConstants.coralSensor2Front);
-  private DigitalInput coralSensor2 = new DigitalInput(Constants.ShooterConstants.coralSensor1Back);
+  private DigitalInput coralSensor2 = new DigitalInput(Constants.ShooterConstants.coralSensor2Front);
+  private DigitalInput coralSensor1 = new DigitalInput(Constants.ShooterConstants.coralSensor1Back);
 
   public boolean hasCoral = true;
 
