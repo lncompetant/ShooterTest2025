@@ -61,16 +61,16 @@ public final class Constants
     public static final int coralSensor1Back = 1;
 
     //shooter speeds
-    public static final double rightMaxShooterSpeed = 0.05;
-    public static final double LeftMaxShooterSpeed = -0.05;
+    public static final double rightMaxShooterSpeed = -0.75;
+    public static final double LeftMaxShooterSpeed = 0.75;
 
 
     public static final double L1LeftShooterSpeed = 1;
     public static final double L1RightShooterSpeed = 0.5;
     public static final double slowShooterSpeed = 0.05;
 
-    public static final double leftIntakeSpeed = -0.06;
-    public static final double rightIntakeSpeed = 0.06;
+    public static final double leftIntakeSpeed = -0.04;
+    public static final double rightIntakeSpeed = 0.04;
 
   }
 }

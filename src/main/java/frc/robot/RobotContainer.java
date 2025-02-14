@@ -54,6 +54,7 @@ public class RobotContainer {
         .onTrue(new ExampleCommand(m_exampleSubsystem));
 
             testerXbox.rightTrigger().whileTrue(new ShootCoral(shooter, Constants.ShooterConstants.LeftMaxShooterSpeed,Constants.ShooterConstants.rightMaxShooterSpeed));
+            
       DigitalInput coralSensor1 = new DigitalInput(1);
       Trigger funnelTrigger = new Trigger(coralSensor1::get); //make the trigger and bind it to the funnel sensor
       funnelTrigger.whileFalse(new Intake(shooter));
