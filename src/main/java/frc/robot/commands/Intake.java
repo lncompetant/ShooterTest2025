@@ -29,25 +29,26 @@ public class Intake extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-   if(!shooter.getCoralSensor2()&&shooter.getCoralSensor3()){
-    shooter.stopShooter();
-    hasCoral = true;
-   }
+ 
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    shooter.stopShooter();
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(hasCoral){
+    if(!shooter.getCoralSensor1()){
+      return true;
+     }
+     else{
       return false;
-    }
-    else{
-    return false;
-  }}
+     }
+
+  }
 }
 
 

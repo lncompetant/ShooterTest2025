@@ -24,19 +24,17 @@ public class Shooter extends SubsystemBase {
   /** Creates a new Shooter. */
   private SparkMax leftMotor = new SparkMax(Constants.ShooterConstants.leftMotorID,MotorType.kBrushless);
   private SparkMax rightMotor = new SparkMax(Constants.ShooterConstants.rightMotorID, MotorType.kBrushless);
-  private DigitalInput coralSensor2 = new DigitalInput(Constants.ShooterConstants.coralSensor2);
-  private DigitalInput coralSensor3 = new DigitalInput(Constants.ShooterConstants.coralSensor3);
+  private DigitalInput coralSensor1 = new DigitalInput(Constants.ShooterConstants.coralSensor2Front);
+  private DigitalInput coralSensor2 = new DigitalInput(Constants.ShooterConstants.coralSensor1Back);
 
   public boolean hasCoral = true;
 
   BooleanPublisher backCoralSensorPublisher;
 
 @AutoLogOutput
-  private BooleanSupplier coralSensor2BooleanSupplier; 
-  private BooleanSupplier coralSensor3BooleanSupplier;
 
+  private boolean coralSensor1Output;
   private boolean coralSensor2Output;
-  private boolean coralSensor3Output;
 
   //private Boolean coralSensor3BooleanSupplier;
 
@@ -48,11 +46,11 @@ public class Shooter extends SubsystemBase {
     leftMotor.set(leftMotorSpeed);
     rightMotor.set(rightMotorSpeed);
   }
+  public boolean getCoralSensor1(){
+    return coralSensor1.get();
+  }
   public boolean getCoralSensor2(){
     return coralSensor2.get();
-  }
-  public boolean getCoralSensor3(){
-    return coralSensor3.get();
   }
 
   public void stopShooter(){
@@ -63,8 +61,8 @@ public class Shooter extends SubsystemBase {
   @Override
   public void periodic() {
 
-    coralSensor2Output =coralSensor2.get();
-    coralSensor3Output =coralSensor3.get();
+    coralSensor1Output =getCoralSensor1();
+    coralSensor2Output =getCoralSensor2();
     
  //   backCoralSensorPublisher.setDefault(false);
  //   backCoralSensorPublisher.set(coralSensor3Output);
