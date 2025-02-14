@@ -25,8 +25,8 @@ import frc.robot.Constants;
 public class Shooter extends SubsystemBase {
   /** Creates a new Shooter. */
   private SparkMaxConfig motorConfig = new SparkMaxConfig();
-  private SparkMax leftMotor = new SparkMax(Constants.ShooterConstants.leftMotorID,MotorType.kBrushless);
-  private SparkMax rightMotor = new SparkMax(Constants.ShooterConstants.rightMotorID, MotorType.kBrushless);
+  private SparkMax RightMotor = new SparkMax(Constants.ShooterConstants.RightMotorID,MotorType.kBrushless);
+  private SparkMax LeftMotor = new SparkMax(Constants.ShooterConstants.LeftMotorID, MotorType.kBrushless);
   private DigitalInput coralSensor2 = new DigitalInput(Constants.ShooterConstants.coralSensor2Front);
  // private DigitalInput coralSensor1 = new DigitalInput(Constants.ShooterConstants.coralSensor1Back);
 
@@ -47,14 +47,14 @@ public class Shooter extends SubsystemBase {
     .inverted(true);
 
 
-    rightMotor.configure(motorConfig, com.revrobotics.spark.SparkBase.ResetMode.kResetSafeParameters,PersistMode.kPersistParameters);
-    leftMotor.configure(motorConfig, com.revrobotics.spark.SparkBase.ResetMode.kResetSafeParameters,PersistMode.kPersistParameters);
+    RightMotor.configure(motorConfig, com.revrobotics.spark.SparkBase.ResetMode.kResetSafeParameters,PersistMode.kPersistParameters);
+    LeftMotor.configure(motorConfig, com.revrobotics.spark.SparkBase.ResetMode.kResetSafeParameters,PersistMode.kPersistParameters);
 
   }
 
   public void spinShooters(double rightMotorSpeed, double leftMotorSpeed){
-    leftMotor.set(leftMotorSpeed);
-    rightMotor.set(rightMotorSpeed);
+    RightMotor.set(rightMotorSpeed);
+    LeftMotor.set(leftMotorSpeed);
   }
   //public boolean getCoralSensor1(){
   //  return coralSensor1.get();
@@ -64,8 +64,8 @@ public class Shooter extends SubsystemBase {
   }
 
   public void stopShooter(){
-    leftMotor.stopMotor();
-    rightMotor.stopMotor();
+    RightMotor.stopMotor();
+    LeftMotor.stopMotor();
   }
 
   @Override
