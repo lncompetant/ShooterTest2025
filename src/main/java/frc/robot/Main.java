@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import java.util.Objects;
 import edu.wpi.first.wpilibj.RobotBase;
 
 /**

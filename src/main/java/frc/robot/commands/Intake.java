@@ -4,52 +4,51 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
+import frc.robot.subsystems.Shooter;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
-public class ShootCoral extends Command {
-  /** Creates a new ShootCoral. */
+public class Intake extends Command {
+  Shooter shooter;
+  boolean hasCoral = false;
 
-  private double leftMotorSpeed;
-  private double rightMotorSpeed;
-  private Shooter shooter;
 
-  public ShootCoral(Shooter shooter, double leftMotorSpeed, double rightMotorSpeed) {
+  /** Creates a new Intake. */
+  public Intake(Shooter shooter) {
     this.shooter = shooter;
-    this.leftMotorSpeed = leftMotorSpeed;
-    this.rightMotorSpeed = rightMotorSpeed;
-
     addRequirements(shooter);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-   // shooter.spinShooters(leftMotorSpeed,rightMotorSpeed);
+    shooter.spinShooters(Constants.ShooterConstants.slowShooterSpeed, Constants.ShooterConstants.slowShooterSpeed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    shooter.spinShooters(leftMotorSpeed,rightMotorSpeed);
+   if(!shooter.getCoralSensor2()&&shooter.getCoralSensor3()){
+    shooter.stopShooter();
+    hasCoral = true;
+   }
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    shooter.spinShooters(0,0);
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-  //if the coral sensor sees coral, keep motors running, if the coral is not sensed, stop the motors
-     if(shooter.getCoralSensor3()){ 
-      return true;
-    }
-    else{
+    if(hasCoral){
       return false;
     }
-  }
+    else{
+    return false;
+  }}
 }
+
+
+
